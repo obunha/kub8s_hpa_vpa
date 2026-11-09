@@ -22,8 +22,8 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "~> 5.0"
 
-  name = "${var.cluster_name}-vpc"
-  cidr = var.vpc_cidr
+  # Explicitly define Availability Zones to avoid the "empty list" error in the VPC module
+  azs = ["${var.region}a", "${var.region}b"]
 
   # Use the standard variable names for the VPC module
   enable_dns_hostnames = true
