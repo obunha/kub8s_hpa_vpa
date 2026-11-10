@@ -9,6 +9,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      # id-token: write # Required for AWS OIDC
+      contents: read
     steps:
     - uses: actions/checkout@v4
 
